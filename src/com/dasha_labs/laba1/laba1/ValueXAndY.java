@@ -1,4 +1,4 @@
-package com.dasha_labs;
+package com.dasha_labs.laba1.laba1;
 
 import java.util.Scanner;
 
