@@ -1,7 +1,8 @@
 package com.dasha_labs.laba1.laba2;
 
-public class TubeMonitor implements Comparable{
+public class TubeMonitor implements Monitor, Comparable{
 
+    public String name = "Tube";
     private static int price = 500;
 
     public String toString(){
@@ -18,7 +19,7 @@ public class TubeMonitor implements Comparable{
     }
 
     public int quality(){
-        System.out.println("Не самое лучшее");
+        System.out.println("Качество изображения лампового монитора низкое");
         return 0;
     }
 

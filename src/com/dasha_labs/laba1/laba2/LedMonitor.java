@@ -1,8 +1,9 @@
 package com.dasha_labs.laba1.laba2;
 
-public class LedMonitor extends TubeMonitor implements Comparable {
+public class LedMonitor extends TubeMonitor implements Monitor, Comparable {
 
     private static int price = 1500;
+    private String name = "Led";
 
     public String toString() {
         return "Led Monitor";
@@ -18,7 +19,7 @@ public class LedMonitor extends TubeMonitor implements Comparable {
     }
 
     public int quality() {
-        System.out.println("Среднее");
+        System.out.println("Качество изображения лэд монитора нормальное");
         return 1;
     }
 

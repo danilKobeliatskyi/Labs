@@ -4,30 +4,32 @@ import java.util.Arrays;
 
 public class Description {
     Description(){
+        System.out.println("Описание мониторов: ");
+
         TubeMonitor tube = new TubeMonitor();
         MatrixMonitor matrix = new MatrixMonitor();
         LedMonitor led = new LedMonitor();
-        MonitorSize size = new MonitorSize();
-        MonitorQuality quality = new MonitorQuality();
 
+        System.out.println("\n");
         System.out.println(tube.toString());
         tube.size();
         tube.form();
         tube.quality();
 
+        System.out.println("\n");
         System.out.println(led.toString());
         led.size();
         led.form();
         led.quality();
 
+        System.out.println("\n");
         System.out.println(matrix.toString());
         matrix.size();
         matrix.form();
         matrix.quality();
 
 
-        Object[] monitors;
-        monitors = new Object[]{
+        Object[] monitors = new Object[]{
                 new TubeMonitor(),
                 new LedMonitor(),
                 new MatrixMonitor(),
@@ -36,40 +38,15 @@ public class Description {
                 new LedMonitor()
         };
 
-        System.out.println("\n" + "Отсортированый масив:" + "\n");
+        System.out.println("Массив обьектов мониторов: " + "\n");
+        for (Object monitor : monitors)
+            System.out.println(monitor);
 
-        for (int i = 0; i < monitors.length; i++) {
+            System.out.println("\n" + "Отсортированый масив:" + "\n");
+
+        for (Object monitor : monitors) {
             Arrays.sort(monitors);
-            System.out.println(monitors[i]);
-        }
-
-
-        System.out.println("\n");
-
-        switch (led.compareTo(matrix)){
-            case 0: System.out.println("Цена мониторов одинакова");
-                break;
-            case 1: System.out.println("Этот монитор дороже");
-                break;
-            case -1: System.out.println("Этот монитор дешевле");
-        }
-
-        System.out.println("\n");
-
-        switch (size.compare(matrix, tube)){
-            case 0: System.out.println("Этот монитор больше");
-                break;
-            case 1: System.out.println("Этот монитор меньше");
-                break;
-        }
-
-        System.out.println("\n");
-
-        switch (quality.compare(matrix, tube)){
-            case 0: System.out.println("Качество изображения этого монитора лучше");
-                break;
-            case 1: System.out.println("Качество изображения этого монитора хуже");
-                break;
+            System.out.println(monitor);
         }
     }
 }

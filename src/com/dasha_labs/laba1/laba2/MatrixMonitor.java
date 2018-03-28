@@ -1,8 +1,9 @@
 package com.dasha_labs.laba1.laba2;
 
-public class MatrixMonitor extends LedMonitor implements Comparable{
+public class MatrixMonitor extends LedMonitor implements Monitor, Comparable{
 
     private static int price = 5500;
+    private String name = "Matrix";
 
     public String toString(){
         return "Matrix Monitor";
@@ -18,7 +19,7 @@ public class MatrixMonitor extends LedMonitor implements Comparable{
     }
 
     public int quality(){
-        System.out.println("Хорошее");
+        System.out.println("Качествое изображения матричного монитора высокое");
         return 2;
     }
 
