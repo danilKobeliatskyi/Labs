@@ -10,7 +10,7 @@ public class LedMonitor extends TubeMonitor implements Monitor, Comparable {
     }
 
     public int size() {
-        System.out.println("Средний");
+        System.out.println("Диагональ лэд монитора 15 дюймов");
         return 1;
     }
 
@@ -19,7 +19,7 @@ public class LedMonitor extends TubeMonitor implements Monitor, Comparable {
     }
 
     public int quality() {
-        System.out.println("Качество изображения лэд монитора нормальное");
+        System.out.println("Качество изображения лэд монитора 1280х720");
         return 1;
     }
 

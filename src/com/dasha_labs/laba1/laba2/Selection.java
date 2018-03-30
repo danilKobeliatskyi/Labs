@@ -8,7 +8,7 @@ public class Selection {
     private Scanner scanner = new Scanner(System.in);
 
     public TubeMonitor selectionsFirst(){
-        System.out.println("Ведите название монитора, который вы хотите сравнить");
+        System.out.println("Ведите название монитора (tube, led или matrix)");
         String name1 = scanner.nextLine();
 
         switch (name1){
@@ -21,8 +21,9 @@ public class Selection {
         }
         return o1;
     }
+
     public TubeMonitor selectionsSecond() {
-        System.out.println("Ведите название монитора, с которым вы хотите провести сравнение");
+        System.out.println("Ведите название монитора, с которым вы хотите провести сравнение (tube, led или matrix)");
         String name2 = scanner.nextLine();
 
         switch (name2) {

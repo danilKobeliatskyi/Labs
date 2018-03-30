@@ -10,7 +10,7 @@ public class TubeMonitor implements Monitor, Comparable{
     }
 
     public int size(){
-        System.out.println("Небольшой");
+        System.out.println("Диагональ лампового монитора 10 дюймов");
         return 0;
     }
 
@@ -19,7 +19,7 @@ public class TubeMonitor implements Monitor, Comparable{
     }
 
     public int quality(){
-        System.out.println("Качество изображения лампового монитора низкое");
+        System.out.println("Качество изображения лампового монитора 800х600");
         return 0;
     }
 

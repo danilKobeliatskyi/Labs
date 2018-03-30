@@ -10,7 +10,7 @@ public class MatrixMonitor extends LedMonitor implements Monitor, Comparable{
     }
 
     public int size(){
-        System.out.println("Большой");
+        System.out.println("Диагональ матричного монитора 20 дюймов");
         return 2;
     }
 
@@ -19,7 +19,7 @@ public class MatrixMonitor extends LedMonitor implements Monitor, Comparable{
     }
 
     public int quality(){
-        System.out.println("Качествое изображения матричного монитора высокое");
+        System.out.println("Качество изображения матричного монитора 1920х1080");
         return 2;
     }
 
