@@ -1,68 +1,151 @@
 package com.dasha_labs.laba1.laba3;
 
-import com.dasha_labs.laba1.laba2.TubeMonitor;
+import java.util.Iterator;
 
-public class MyListImpl implements IMyList<TubeMonitor> {
-    private final int INIT_SIZE = 16;
-    private final int CUT_RATE = 4;
-    private Object[] array = new Object[INIT_SIZE];
-    private int pointer = 0;
+public class MyListImpl<E> implements IMyList<E> {
+    private Node<E> last;
+    private Node<E> first;
+    private int size = 0;
+
+    private static class Node<E> {
+        E item;
+        Node<E> next;
+        Node<E> prev;
+
+        Node(Node<E> prev, E element, Node<E> next) {
+            this.item = element;
+            this.next = next;
+            this.prev = prev;
+        }
+    }
 
     @Override
-    public void add(TubeMonitor item) {
-        if(pointer == array.length-1)
-            resize(array.length*2);
-        array[pointer++] = item;
+    public void add(E e){
+        final Node<E> l = last;
+        final Node<E> newNode = new Node<>(l, e, null);
+        last = newNode;
+
+            if (l == null)
+                first = newNode;
+            else
+                l.next = newNode;
+        size++;
     }
 
     @Override
     public void clear() {
-        pointer = 0;
+        for (Node<E> x = first; x != null; ) {
+            Node<E> next = x.next;
+            x.item = null;
+            x.next = null;
+            x.prev = null;
+            x = next;
+        }
+        first = last = null;
+        size = 0;
     }
 
     @Override
-    public boolean remove(int index) {
-        for (int i = index; i < pointer; i++)
-            array[i] = array[i+1];
-        array[pointer] = null;
-        pointer--;
-        if (array.length > INIT_SIZE && pointer < array.length / CUT_RATE)
-            resize(array.length/2);
-        return true;
+    public boolean remove(Object o) {
+        if (o == null) {
+            for (Node<E> x = first; x != null; x = x.next) {
+                if (x.item == null) {
+                    unlink(x);
+                    return true;
+                }
+            }
+        } else {
+            for (Node<E> x = first; x != null; x = x.next) {
+                if (o.equals(x.item)) {
+                    unlink(x);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override
     public Object[] toArray() {
-        Object[] result = new Object[pointer];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = array[i];
-            System.out.println(result[i]);
-        }
+        Object[] result = new Object[size];
+        int i = 0;
+        for (Node<E> x = first; x != null; x = x.next)
+            result[i++] = x.item;
         return result;
-    }
-
-    public TubeMonitor get(int index) {
-        return (TubeMonitor) array[index];
     }
 
     @Override
     public int size() {
-        return pointer;
+        return size;
     }
 
     @Override
-    public boolean contains(TubeMonitor o) {
-        for (int i = 0; i < pointer; i++)
-            if (array[i].equals(o))
-                System.out.println(true);
-        else System.out.println(false);
-        return false;
+    public boolean contains(Object o) {
+        return indexOf(o) >= 0;
     }
 
-    /*Вспомогательный метод для масштабирования.*/
-    private void resize(int newLength) {
-        Object[] newArray = new Object[newLength];
-        System.arraycopy(array, 0, newArray, 0, pointer);
-        array = newArray;
+
+    @Override
+    public Iterator<E> iterator() {
+        return new IteratorImpl<E>();
+    }
+
+    private class IteratorImpl<E> implements Iterator<E>{
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public E next() {
+            return null;
+        }
+
+        public void remove(){
+
+        }
+    }
+
+    private E unlink(Node<E> x) {
+        // assert x != null;
+        final E element = x.item;
+        final Node<E> next = x.next;
+        final Node<E> prev = x.prev;
+
+        if (prev == null) {
+            first = next;
+        } else {
+            prev.next = next;
+            x.prev = null;
+        }
+
+        if (next == null) {
+            last = prev;
+        } else {
+            next.prev = prev;
+            x.next = null;
+        }
+
+        x.item = null;
+        size--;
+        return element;
+    }
+
+    private int indexOf(Object o) {
+        int index = 0;
+        if (o == null) {
+            for (Node<E> x = first; x != null; x = x.next) {
+                if (x.item == null)
+                    return index;
+                index++;
+            }
+        } else {
+            for (Node<E> x = first; x != null; x = x.next) {
+                if (o.equals(x.item))
+                    return index;
+                index++;
+            }
+        }
+        return -1;
     }
 }
