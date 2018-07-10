@@ -6,7 +6,7 @@ public class TubeMonitor implements Monitor, Comparable{
     private static int price = 500;
 
     public String toString(){
-        return "Tube Monitor";
+        return "[Tube Monitor]";
     }
 
     public int size(){

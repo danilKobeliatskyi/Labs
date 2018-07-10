@@ -6,7 +6,7 @@ public class LedMonitor extends TubeMonitor implements Monitor, Comparable {
     private String name = "Led";
 
     public String toString() {
-        return "Led Monitor";
+        return "[Led Monitor]";
     }
 
     public int size() {

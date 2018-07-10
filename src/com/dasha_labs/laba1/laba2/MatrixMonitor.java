@@ -6,7 +6,7 @@ public class MatrixMonitor extends LedMonitor implements Monitor, Comparable{
     private String name = "Matrix";
 
     public String toString(){
-        return "Matrix Monitor";
+        return "[Matrix Monitor]";
     }
 
     public int size(){

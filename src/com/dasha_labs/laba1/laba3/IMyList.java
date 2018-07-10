@@ -1,9 +1,7 @@
 package com.dasha_labs.laba1.laba3;
 
-import java.util.Iterator;
-
 public interface IMyList<E> extends Iterable {
-    void add(E e);
+    void add(E o);
     void clear();
     boolean remove(Object o);
     Object[] toArray();
